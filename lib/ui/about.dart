@@ -1,18 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_first_app/widget/widget.dart';
-import 'about.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../common/theme_controller.dart';
 
-class HomePage extends StatefulWidget {
-  final VoidCallback? onPressed;
-
-  HomePage({this.onPressed});
-
-  @override
-  State<StatefulWidget> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
+class About extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -21,11 +11,23 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [CardWidget(widget: QuoteWidget())],
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Center(
+            child: Text(
+              "Created By Ipii",
+              style: GoogleFonts.montserrat(
+                fontSize: 30,
+                fontWeight: FontWeight.w900,
+              ),
+            ),
+          ),
+          Center(child: Text("Ver 1.0.0", style: GoogleFonts.montserrat())),
+        ],
       ),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text("Quotes"),
+        title: Text("About"),
         actions: [
           Builder(
             builder: (context) => IconButton(
@@ -41,17 +43,15 @@ class _HomePageState extends State<HomePage> {
         child: ListView(
           padding: EdgeInsets.all(20),
           children: [
-            ListTile(title: Text("Quotes"), leading: Icon(Icons.book)),
             ListTile(
-              title: Text("About"),
-              leading: Icon(Icons.info),
+              title: Text("Quotes"),
+              leading: Icon(Icons.book),
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => About()),
-                );
+                Navigator.pop(context);
+                Navigator.pop(context);
               },
             ),
+            ListTile(title: Text("About"), leading: Icon(Icons.info)),
             ListTile(
               title: isDark ? Text("Light Mode") : Text("Dark Mode"),
               leading: Icon(isDark ? Icons.wb_sunny : Icons.nightlight_round),

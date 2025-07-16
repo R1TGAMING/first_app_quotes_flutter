@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:my_first_app/network/network.dart';
 
 class QuoteWidget extends StatefulWidget {
@@ -38,9 +39,9 @@ class _QuoteWidget extends State<QuoteWidget> {
                         child: Text(
                           '" $quote "',
                           textAlign: TextAlign.center,
-                          style: TextStyle(
+                          style: GoogleFonts.montserrat(
+                            fontSize: 20,
                             fontWeight: FontWeight.w900,
-                            fontStyle: FontStyle.italic,
                           ),
                         ),
                       ),
@@ -49,7 +50,9 @@ class _QuoteWidget extends State<QuoteWidget> {
                       padding: EdgeInsetsGeometry.directional(bottom: 20),
                       child: Text(
                         "- $author -",
-                        style: TextStyle(fontWeight: FontWeight.w900),
+                        style: GoogleFonts.montserrat(
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                   ],

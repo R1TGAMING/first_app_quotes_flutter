@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'ui/home.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'common/theme_controller.dart';
 
 Future main() async {
   await dotenv.load(fileName: ".env");
@@ -9,30 +10,27 @@ Future main() async {
 }
 
 class MyApp extends StatelessWidget {
-  final ValueNotifier _notifier = ValueNotifier(ThemeMode.light);
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return ValueListenableBuilder(
-      valueListenable: _notifier,
+      valueListenable: notifier,
       builder: (_, mode, _) {
         return MaterialApp(
           themeMode: mode,
-
           darkTheme: ThemeData(
             fontFamily: GoogleFonts.montserrat().fontFamily,
             brightness: Brightness.dark,
           ),
           debugShowCheckedModeBanner: false,
-          home: HomePage(
-            onPressed: () => {
-              _notifier.value = mode == ThemeMode.light
-                  ? ThemeMode.dark
-                  : ThemeMode.light,
-            },
-          ),
+          home: HomePage(),
           theme: ThemeData(
+            textTheme: TextTheme(
+              bodyLarge: TextStyle(color: Colors.grey[800]),
+              bodyMedium: TextStyle(color: Colors.grey[800]),
+              titleLarge: TextStyle(color: Colors.grey[800]),
+              labelLarge: TextStyle(color: Colors.grey[800]),
+            ),
             fontFamily: GoogleFonts.montserrat().fontFamily,
             brightness: Brightness.light,
           ),
